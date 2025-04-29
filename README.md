@@ -21,14 +21,14 @@ A modern, responsive voice-controlled form built with React that allows users to
 
 ### Prerequisites
 
-- Node.js (v14 or newer)
+- Node.js (v19 or newer)
 - npm or yarn
 
 ### Installation
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/yourusername/voice-form.git
+git clone https://github.com/sabowaryan/voiceform.git
 cd voice-form
 ```
 
