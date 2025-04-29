@@ -48,6 +48,28 @@ yarn start
 
 4. Open your browser and navigate to `http://localhost:3000`
 
+## 🌐 Deployment
+
+This project is configured for automatic deployment to GitHub Pages. You can visit the live demo at:
+
+[https://sabowaryan.github.io/voiceform](https://sabowaryan.github.io/voiceform)
+
+### Manual Deployment
+
+If you want to deploy manually:
+
+1. Make sure all your changes are committed and pushed
+2. Run:
+```bash
+npm run deploy
+```
+
+### Continuous Deployment
+
+The project uses GitHub Actions for continuous deployment:
+- Every push to the `main` branch automatically triggers a build and deploy to GitHub Pages
+- The workflow file is located at `.github/workflows/deploy.yml`
+
 ## 💻 Usage
 
 1. Click on any field you want to fill in
