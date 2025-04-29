@@ -15,7 +15,7 @@ A modern, responsive voice-controlled form built with React that allows users to
 
 ## 📋 Screenshot
 
-![Voice Form Screenshot](https://via.placeholder.com/800x500?text=Voice+Form+Screenshot)
+![Voice Form Screenshot](/public/images/voiceform-screenshot.png)
 
 ## 🚀 Getting Started
 
