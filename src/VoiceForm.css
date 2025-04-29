@@ -1,0 +1,503 @@
+/* 
+ * Voice Form - CSS Styles
+ * A modern, responsive voice-controlled form with animations and visual feedback
+ */
+
+/* CSS variables for consistent theming */
+:root {
+  /* Color palette */
+  --primary-color: #4361ee;
+  --primary-dark: #3a56d4;
+  --primary-light: #6e85f7;
+  --secondary-color: #48bfe3;
+  --success-color: #2ec4b6;
+  --success-dark: #20a799;
+  --warning-color: #f77f00;
+  --danger-color: #e63946;
+  --danger-dark: #d21f2e;
+  --light-color: #f8f9fa;
+  --dark-color: #212529;
+  
+  /* Grayscale palette */
+  --gray-100: #f8f9fa;
+  --gray-200: #e9ecef;
+  --gray-300: #dee2e6;
+  --gray-400: #ced4da;
+  --gray-500: #adb5bd;
+  --gray-600: #6c757d;
+  --gray-700: #495057;
+  --gray-800: #343a40;
+  
+  /* Typography */
+  --font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  
+  /* Spacing & sizing */
+  --border-radius-sm: 8px;
+  --border-radius-md: 12px;
+  --border-radius-lg: 16px;
+  
+  /* Effects */
+  --transition: all 0.3s ease;
+  --shadow-sm: 0 2px 5px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 5px 15px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.1);
+  --shadow-hover: 0 15px 30px rgba(0, 0, 0, 0.15);
+}
+
+/* Base styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Body styling */
+body {
+  font-family: var(--font-family);
+  background: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--gray-800);
+  line-height: 1.6;
+}
+
+/* ===== FORM CONTAINER ===== */
+.voice-form-container {
+  max-width: 680px;
+  width: 100%;
+  margin: 2rem;
+  padding: 2.5rem;
+  background: white;
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow-lg);
+  transition: var(--transition);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Colored top border */
+.voice-form-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 6px;
+  background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+}
+
+/* Container hover effect */
+.voice-form-container:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-hover);
+}
+
+/* Form heading */
+.voice-form-container h1 {
+  text-align: center;
+  color: var(--primary-color);
+  margin-bottom: 1.5rem;
+  font-size: 2.2rem;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+
+/* Form description */
+.form-description {
+  text-align: center;
+  color: var(--gray-600);
+  margin-bottom: 2rem;
+  font-size: 1.1rem;
+  line-height: 1.5;
+  padding: 0 1.5rem;
+}
+
+/* ===== FORM LAYOUT ===== */
+.voice-form {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+/* Form group for each input field */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+
+/* Field labels */
+.form-group label {
+  font-weight: 600;
+  color: var(--gray-700);
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: var(--transition);
+}
+
+/* Focus effect for labels */
+.form-group:focus-within label {
+  color: var(--primary-color);
+}
+
+/* Input group (input + button) */
+.input-group {
+  display: flex;
+  gap: 0.7rem;
+  position: relative;
+}
+
+/* ===== FORM INPUTS ===== */
+.input-group input,
+.input-group textarea {
+  flex: 1;
+  padding: 1rem 1.2rem;
+  border: 2px solid var(--gray-300);
+  border-radius: var(--border-radius-md);
+  font-size: 1rem;
+  transition: var(--transition);
+  box-shadow: var(--shadow-sm);
+  background: var(--gray-100);
+  color: var(--gray-800);
+  font-family: var(--font-family);
+}
+
+/* Focus styles for inputs */
+.input-group input:focus,
+.input-group textarea:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  background: white;
+  box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.15);
+}
+
+/* Placeholder styles */
+.input-group input::placeholder,
+.input-group textarea::placeholder {
+  color: var(--gray-500);
+  font-style: italic;
+}
+
+/* Textarea specific styles */
+.input-group textarea {
+  min-height: 120px;
+  resize: vertical;
+  line-height: 1.5;
+}
+
+/* ===== MICROPHONE BUTTON ===== */
+.mic-button {
+  background: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: var(--border-radius-md);
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 1.2rem;
+  transition: var(--transition);
+  box-shadow: 0 4px 10px rgba(67, 97, 238, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Microphone button shine effect */
+.mic-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateY(100%);
+  transition: var(--transition);
+}
+
+/* Hover styles for microphone button */
+.mic-button:hover {
+  background: var(--primary-dark);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 15px rgba(67, 97, 238, 0.4);
+}
+
+.mic-button:hover::before {
+  transform: translateY(0);
+}
+
+/* Active state (when pressed) */
+.mic-button:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 5px rgba(67, 97, 238, 0.2);
+}
+
+/* Active state (when recording) */
+.mic-button.active {
+  background: var(--danger-color);
+  animation: pulse 1.5s infinite;
+  box-shadow: 0 0 20px rgba(230, 57, 70, 0.5);
+}
+
+/* ===== SUBMIT BUTTON ===== */
+.submit-button {
+  background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+  color: white;
+  border: none;
+  border-radius: var(--border-radius-md);
+  padding: 1.2rem;
+  font-size: 1.15rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+  margin-top: 1rem;
+  box-shadow: 0 5px 15px rgba(67, 97, 238, 0.3);
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Shimmer effect for submit button */
+.submit-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transform: translateX(-100%);
+}
+
+/* Hover styles for submit button */
+.submit-button:hover {
+  background: linear-gradient(135deg, var(--primary-dark), var(--primary-color));
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(67, 97, 238, 0.4);
+}
+
+/* Animate shimmer on hover */
+.submit-button:hover::before {
+  transform: translateX(100%);
+  transition: transform 0.8s ease;
+}
+
+/* Active state */
+.submit-button:active {
+  transform: translateY(0);
+  box-shadow: 0 3px 10px rgba(67, 97, 238, 0.3);
+}
+
+/* Submitting state */
+.submit-button.submitting {
+  background: linear-gradient(135deg, var(--gray-500), var(--gray-600));
+  cursor: not-allowed;
+  transform: translateY(0) !important;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Success state */
+.submit-button.success {
+  background: linear-gradient(135deg, var(--success-color), var(--success-dark));
+}
+
+/* ===== FEEDBACK MESSAGES ===== */
+.feedback-message {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 15px 25px;
+  border-radius: var(--border-radius-md);
+  color: white;
+  font-weight: 500;
+  text-align: center;
+  animation: slide-down 0.3s forwards, fade-out 0.5s 2.5s forwards;
+  z-index: 100;
+  box-shadow: var(--shadow-md);
+  min-width: 300px;
+  max-width: 80%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+/* Success message */
+.feedback-message.success {
+  background: linear-gradient(135deg, var(--success-color), var(--success-dark));
+}
+
+.feedback-message.success::before {
+  content: '✓';
+  font-size: 1.2rem;
+}
+
+/* Error message */
+.feedback-message.error {
+  background: linear-gradient(135deg, var(--danger-color), var(--danger-dark));
+}
+
+.feedback-message.error::before {
+  content: '✕';
+  font-size: 1.2rem;
+}
+
+/* Info message */
+.feedback-message.info {
+  background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+}
+
+.feedback-message.info::before {
+  content: 'ℹ';
+  font-size: 1.2rem;
+}
+
+/* ===== RECORDING INDICATOR ===== */
+.recording-indicator {
+  color: var(--danger-color);
+  font-size: 0.85rem;
+  margin-top: 0.5rem;
+  display: flex;
+  align-items: center;
+  animation: blink 1.5s infinite;
+}
+
+/* Recording indicator dot */
+.recording-indicator::before {
+  content: '';
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  background-color: var(--danger-color);
+  border-radius: 50%;
+  margin-right: 8px;
+}
+
+/* ===== ANIMATIONS ===== */
+/* Pulsing animation for recording */
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(230, 57, 70, 0.7);
+  }
+  70% {
+    transform: scale(1.1);
+    box-shadow: 0 0 0 15px rgba(230, 57, 70, 0);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(230, 57, 70, 0);
+  }
+}
+
+/* Slide down animation for feedback messages */
+@keyframes slide-down {
+  0% {
+    transform: translate(-50%, -100px);
+    opacity: 0;
+  }
+  100% {
+    transform: translate(-50%, 0);
+    opacity: 1;
+  }
+}
+
+/* Fade out animation for feedback messages */
+@keyframes fade-out {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+/* Blinking animation for recording indicator */
+@keyframes blink {
+  0% { opacity: 1; }
+  50% { opacity: 0.5; }
+  100% { opacity: 1; }
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
+/* Tablet and smaller screens */
+@media (max-width: 768px) {
+  .voice-form-container {
+    margin: 1rem;
+    padding: 1.5rem;
+    border-radius: var(--border-radius-md);
+  }
+  
+  .voice-form-container h1 {
+    font-size: 1.8rem;
+  }
+  
+  .form-description {
+    font-size: 1rem;
+    padding: 0;
+  }
+  
+  .form-group label {
+    font-size: 0.95rem;
+  }
+  
+  /* Stack inputs and buttons on smaller screens */
+  .input-group {
+    flex-direction: column;
+  }
+  
+  /* Position microphone button at top right of input */
+  .mic-button {
+    align-self: flex-end;
+    margin-top: -60px;
+    margin-bottom: 10px;
+  }
+
+  .input-group textarea {
+    min-height: 100px;
+  }
+  
+  .submit-button {
+    padding: 1rem;
+    font-size: 1rem;
+  }
+}
+
+/* Mobile phones */
+@media (max-width: 480px) {
+  .voice-form-container {
+    margin: 0.5rem;
+    padding: 1.2rem;
+  }
+  
+  .voice-form-container h1 {
+    font-size: 1.6rem;
+  }
+  
+  .form-group {
+    gap: 0.5rem;
+  }
+  
+  .input-group input,
+  .input-group textarea {
+    padding: 0.8rem 1rem;
+    font-size: 0.95rem;
+  }
+  
+  .mic-button {
+    width: 45px;
+    height: 45px;
+    margin-top: -55px;
+  }
+} 
